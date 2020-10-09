@@ -3818,7 +3818,10 @@ function createTippy(reference, collectionProps) {
 
     if (isCursorOutsideInteractiveBorder(getBasicPlacement(popper), popper.getBoundingClientRect(), event, instance.props)) {
       cleanupInteractiveMouseListeners();
-      scheduleHide();
+
+      if (!(instance.props.trigger === 'click' || instance.props.trigger === 'manual')) {
+        scheduleHide();
+      }
     }
   }
   /**
